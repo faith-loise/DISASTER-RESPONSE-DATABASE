@@ -1,0 +1,111 @@
+CREATE TABLE Agencies (
+    Agency_ID INT PRIMARY KEY,
+    Name VARCHAR(255) NOT NULL,
+    Contact_Info VARCHAR(255) NOT NULL,
+    Location VARCHAR(255)
+);
+
+CREATE TABLE Disasters (
+    Disaster_ID INT PRIMARY KEY,
+    Type VARCHAR(255),
+    Location VARCHAR(255),
+    Severity VARCHAR(50),
+    Date DATE
+);
+
+CREATE TABLE Resources (
+    Resource_ID INT PRIMARY KEY,
+    Type VARCHAR(255),
+    Quantity INT NOT NULL,
+    Availability BOOLEAN NOT NULL,
+    Agency_ID INT,
+    FOREIGN KEY (Agency_ID) REFERENCES Agencies(Agency_ID)
+);
+
+CREATE TABLE ResponseTeams (
+    Team_ID INT PRIMARY KEY,
+    Team_Name VARCHAR(255),
+    Capabilities TEXT,
+    Status VARCHAR(50),
+    Disaster_ID INT,
+    FOREIGN KEY (Disaster_ID) REFERENCES Disasters(Disaster_ID)
+);
+
+CREATE TABLE Victims (
+    Victim_ID INT PRIMARY KEY,
+    Name VARCHAR(255),
+    Location VARCHAR(255),
+    Needs TEXT,
+    Status VARCHAR(50)
+);
+
+CREATE TABLE CommunicationLogs (
+    Log_ID INT PRIMARY KEY,
+    Agency_ID INT,
+    Disaster_ID INT,
+    Message TEXT,
+    Timestamp TIMESTAMP,
+    FOREIGN KEY (Agency_ID) REFERENCES Agencies(Agency_ID),
+    FOREIGN KEY (Disaster_ID) REFERENCES Disasters(Disaster_ID)
+);
+
+INSERT INTO Disasters (Disaster_ID, Type, Location, Severity, Date)
+VALUES 
+('1', 'Flood', 'Nairobi', 'High', '2024-11-01'),
+('2', 'Earthquake', 'Eldoret', 'Critical', '2024-10-15'),
+('3', 'Drought', 'Garissa', 'Medium', '2024-09-30'),
+('4', 'Flood', 'Mombasa', 'High', '2024-08-10'),
+('5', 'Wildfire', 'Narok', 'Low', '2024-07-25'),
+('6', 'Landslide', 'Kisii', 'Medium', '2024-06-12'),
+('7', 'Flood', 'Kisumu', 'Critical', '2024-05-18'),
+('8', 'Earthquake', 'Naivasha', 'High', '2024-04-22'),
+('9', 'Flood', 'Thika', 'High', '2024-03-11'),
+('10', 'Tsunami', 'Lamu', 'Critical', '2024-02-28');
+
+INSERT INTO ResponseTeams (Team_ID, Team_Name, Capabilities, Status, Disaster_ID) 
+VALUES
+(1, 'Kenya Red Cross Nairobi', 'Flood Response, Medical Aid', 'Active', 1),
+(2, 'Kenya Defence Forces Eldoret', 'Search and Rescue, Medical Evacuation', 'Active', 2),
+(3, 'National Drought Management Authority', 'Drought Control', 'Active', 3),
+(4, 'Mombasa Fire Brigade', 'Flood Evacuation', 'Active', 4),
+(5, 'Narok County Firefighters', 'Wildfire Evacuation', 'Standby', 5),
+(6, 'Kenya Red Cross Kisii', 'Landslide Response, Medical Aid', 'Active', 6),
+(7, 'Kenya Police Kisumu', 'Flood Evacuation, Public Safety', 'Active', 7),
+(8, 'Kenya Wildlife Service', 'Wildlife Rescue', 'Active', 8),
+(9, 'Thika Community Response Team', 'Flood Response', 'Standby', 9),
+(10, 'Kenya Navy', 'Tsunami Response, Rescue Operations', 'Active', 10);
+
+SELECT * FROM ResponseTeams;
+
+SELECT Team_ID, Team_Name, Capabilities, Status
+FROM ResponseTeams
+WHERE Status = 'Active';
+
+UPDATE ResponseTeams
+SET Status = 'Standby'
+WHERE Team_ID = 2;
+
+DELETE FROM ResponseTeams
+WHERE Team_ID = 4;
+
+SELECT RT.Team_Name, RT.Capabilities, D.Type AS Disaster_Type, D.Location
+FROM ResponseTeams RT
+JOIN Disasters D ON RT.Disaster_ID = D.Disaster_ID;
+
+SELECT RT.Team_Name, D.Type AS Disaster_Type, D.Severity
+FROM ResponseTeams RT
+JOIN Disasters D ON RT.Disaster_ID = D.Disaster_ID
+WHERE D.Severity = 'Critical';
+
+SELECT Team_Name, Capabilities
+FROM ResponseTeams
+WHERE Disaster_ID IN (
+    SELECT Disaster_ID
+    FROM Disasters
+    WHERE Location = 'Kisii'
+);
+
+SELECT RT.Team_Name, D.Type AS Disaster_Type, D.Severity
+FROM ResponseTeams RT
+JOIN Disasters D ON RT.Disaster_ID = D.Disaster_ID
+WHERE RT.Status = 'Active';
