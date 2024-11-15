@@ -4,4 +4,8 @@
  The scope of the program includes infromation related to the disaster that is present,which includes agencies disasters,resources,responce teams,victims,communication logs
  OBJETIVES of the database is that it helps in decision making about a disaster,supports humanitarian efforts by providing data for effective responce and recovery,helps to understand trends of disasters,helps to imput disaster policies and programs reducing disaater risks
  Examples of stakeholders are non-governmental organizations eg redcross,reseachers and government agiencies
+
+
  
+ [new project.csv](https://github.com/user-attachments/files/17779804/new.project.csv)
+
