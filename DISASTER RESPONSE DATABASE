@@ -76,3 +76,17 @@ INSERT INTO Resources (Resource_ID, Resource_Type, Quantity, Availability) VALUE
 ('R005', 'Blankets', '100', 'Available'),
 ('R006', 'Clothes', '10000', 'Available');
 
+CREATE TABLE Victims (
+Victim_ID VARCHAR (100) PRIMARY KEY,
+Name VARCHAR(255),
+Location VARCHAR(255),
+Needs TEXT,
+Status VARCHAR(50)
+);
+
+INSERT INTO Victims (Victim_ID, Name, Location, Needs, Status) VALUES
+('V001', 'Juma Abdi', 'Wajir', 'Medical assistance, food', 'Pending'),
+('V002', 'Jane Salama', 'Turkana', 'Shelter, water', 'Rescued'),
+('V003', 'Alice Mote', 'RiftValley', 'Medical assistance', 'Pending'),
+('V004', 'Bob Mutua', 'Kitui', 'Food, shelter', 'Pending'),
+('V005', 'Eve Hassan', 'Garissa', 'Water, medical assistance', 'Rescued');
