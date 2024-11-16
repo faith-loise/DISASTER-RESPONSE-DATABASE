@@ -1,9 +1,9 @@
+-- Create the ResponseTeams table
 CREATE TABLE ResponseTeams (
     Team_ID VARCHAR(10) PRIMARY KEY,  
     Team_Name VARCHAR(255),
     Capabilities TEXT,
-    Status VARCHAR(50),
-   
+    Status VARCHAR(50)
 );
 
 -- Insert data into ResponseTeams table
@@ -14,3 +14,16 @@ VALUES
 ('T003', 'CHARLIE', 'Drought Control', 'Standby'),
 ('T004', 'DELTA', 'Wildlife Control', 'Active'),
 ('T005', 'ECHO', 'Wildfire Evacuation', 'Standby');
+
+-- Select all records from the ResponseTeams table
+SELECT * FROM ResponseTeams;
+
+-- Select only the Active teams
+SELECT * FROM ResponseTeams WHERE Status = 'Active';
+
+-- Select teams with 'Standby' status
+SELECT Team_Name, Capabilities FROM ResponseTeams WHERE Status = 'Standby';
+
+-- Select a specific team by ID (e.g., Team ID = 'T003')
+SELECT * FROM ResponseTeams WHERE Team_ID = 'T003';
+
