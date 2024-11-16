@@ -90,3 +90,21 @@ INSERT INTO Victims (Victim_ID, Name, Location, Needs, Status) VALUES
 ('V003', 'Alice Mote', 'RiftValley', 'Medical assistance', 'Pending'),
 ('V004', 'Bob Mutua', 'Kitui', 'Food, shelter', 'Pending'),
 ('V005', 'Eve Hassan', 'Garissa', 'Water, medical assistance', 'Rescued');
+
+CREATE TABLE Disaster (
+    Disaster_ID VARCHAR(100) PRIMARY KEY,            
+    Type VARCHAR(100) NOT NULL,                
+    Location VARCHAR(100) NOT NULL,
+	Severity VARCHAR(100)NOT NULL,
+    Disaster_Date DATE                          
+);
+INSERT INTO Disaster (Disaster_ID, Type, Location, Severity, Disaster_Date)
+VALUES 
+('D001', 'Flood', 'Nairobi', 'High', '2024-11-01'),
+('D002', 'Flood', 'Mombasa', 'High', '2024-08-10'),
+('D003', 'Drought', 'Garissa', 'Medium', '2024-09-30'),
+('D004', 'Wildfire', 'Narok', 'Low', '2024-07-25'),
+('D005', 'Landslide', 'Kisii', 'Medium', '2024-06-12'),
+('D006', 'Flood', 'Kisumu', 'High', '2024-05-18'),
+('D007', 'Flood', 'Thika', 'High', '2024-03-11'),
+('D008', 'Attack by Wild Animals', 'Laikipia', 'Low','2024-02-28');
