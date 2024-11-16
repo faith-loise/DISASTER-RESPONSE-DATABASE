@@ -6,6 +6,4 @@
  Examples of stakeholders are non-governmental organizations eg redcross,reseachers and government agiencies
 
 
- 
- [new project.csv](https://github.com/user-attachments/files/17779804/new.project.csv)
 
