@@ -21,3 +21,29 @@ INSERT INTO Agencies (Agency_ID, Name, Contact_Info, Location) VALUES
 ('A003', 'Police Service', '0800720002', 'Kenya'),
 ('A004', 'St John Ambulance', '0721225285', 'Kenya'),
 ('A005', 'Kenya Wildlife Service', '0800 597 000', 'Kenya');
+
+
+CREATE TABLE ResponseTeams (
+    Team_ID VARCHAR(10) PRIMARY KEY,  
+    Team_Name VARCHAR(255),
+    Capabilities TEXT,
+    Status VARCHAR(50)
+);
+
+
+INSERT INTO ResponseTeams (Team_ID, Team_Name, Capabilities, Status) 
+VALUES
+('T001', 'ALPHA', 'Flood Response', 'Active'),
+('T002', 'BRAVO', 'Search and Rescue', 'Active'),
+('T003', 'CHARLIE', 'Drought Control', 'Standby'),
+('T004', 'DELTA', 'Wildlife Control', 'Active'),
+('T005', 'ECHO', 'Wildfire Evacuation', 'Standby');
+
+SELECT * FROM ResponseTeams;
+
+
+SELECT * FROM ResponseTeams WHERE Status = 'Active';
+
+SELECT Team_Name, Capabilities FROM ResponseTeams WHERE Status = 'Standby';
+
+SELECT * FROM ResponseTeams WHERE Team_ID = 'T003';
