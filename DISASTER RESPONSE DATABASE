@@ -1,1 +1,23 @@
+CREATE TABLE Agencies (
+Agency_ID VARCHAR (100) PRIMARY KEY,
+Name VARCHAR (255) NOT NULL,
+Contact_Info VARCHAR (255) NOT NULL,
+Location VARCHAR (255),
+Team_ID VARCHAR (10),
+Resource_ID VARCHAR (255),
+Disaster_ID VARCHAR (100),
+Log_ID VARCHAR (100),
+Victim_ID VARCHAR(100),
+CONSTRAINT FK_TeamID FOREIGN KEY (Team_ID) REFERENCES ResponseTeams(Team_ID),
+CONSTRAINT FK_DisasterID FOREIGN KEY (Disaster_ID) REFERENCES Disaster(Disaster_ID),
+CONSTRAINT FK_LogID FOREIGN KEY (Log_ID) REFERENCES Communication_Logs(Log_ID),
+CONSTRAINT FK_ResourceID FOREIGN KEY (Resource_ID) REFERENCES Resources(Resource_ID),
+CONSTRAINT FK_Victim_ID FOREIGN KEY (Victim_ID) REFERENCES Victims(Victim_ID)
+);
 
+INSERT INTO Agencies (Agency_ID, Name, Contact_Info, Location) VALUES
+('A001', 'Red Cross', '1199', 'Kenya'),
+('A002', 'Drought Management Authority', ' 020 2224324', 'Kenya'),
+('A003', 'Police Service', '0800720002', 'Kenya'),
+('A004', 'St John Ambulance', '0721225285', 'Kenya'),
+('A005', 'Kenya Wildlife Service', '0800 597 000', 'Kenya');
