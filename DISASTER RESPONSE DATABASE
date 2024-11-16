@@ -47,3 +47,17 @@ SELECT * FROM ResponseTeams WHERE Status = 'Active';
 SELECT Team_Name, Capabilities FROM ResponseTeams WHERE Status = 'Standby';
 
 SELECT * FROM ResponseTeams WHERE Team_ID = 'T003';
+
+CREATE TABLE Communication_Logs (
+Log_ID VARCHAR (100) PRIMARY KEY,
+Log_Message VARCHAR (255),
+Log_Time TIMESTAMP
+);
+
+INSERT INTO Communication_Logs (Log_ID, Log_Message, Log_Time) VALUES
+('LOO1', 'Medical assistance, food', 'Jan 16 14:30:00 2023'),
+('L002', 'Shelter, water', 'Dec 1 11:00:00 2006'),
+('L003', 'Medical assistance', 'Jun 19 14:00:00 2019'),
+('L004', 'Food, shelter', 'Jul 1 16:30:00 2009'),
+('L005', 'Water, medical assistance', 'Nov 16 12:00:00 2016');
+
