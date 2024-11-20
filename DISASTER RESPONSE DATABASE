@@ -108,3 +108,54 @@ VALUES
 ('D006', 'Flood', 'Kisumu', 'High', '2024-05-18'),
 ('D007', 'Flood', 'Thika', 'High', '2024-03-11'),
 ('D008', 'Attack by Wild Animals', 'Laikipia', 'Low','2024-02-28');
+
+SELECT Disaster_ID, Type, Location, Severity, Disaster_Date 
+FROM Disaster 
+WHERE Type = 'Flood';
+
+SELECT DISTINCT Type 
+FROM Disaster;
+
+SELECT Victim_ID, Name, Location, Needs 
+FROM Victims 
+WHERE Status = 'Pending';
+
+SELECT Status, COUNT(*) AS RescuedCount 
+FROM Victims 
+WHERE Status = 'Rescued'
+GROUP BY Status;
+
+SELECT Agency_ID, Name, Contact_Info, Location 
+FROM Agencies 
+ORDER BY Name ASC;
+
+SELECT Team_ID, Team_Name, Capabilities 
+FROM ResponseTeams 
+WHERE Status = 'Active';
+
+SELECT Log_ID, Log_Message, Log_Time 
+FROM Communication_Logs 
+WHERE Log_Time > '2010-01-01 00:00:00';
+
+SELECT Severity, COUNT(*) AS DisasterCount 
+FROM Disaster 
+GROUP BY Severity;
+
+SELECT Victim_ID, Name, Location, Needs, Status 
+FROM Victims 
+ORDER BY Location DESC;
+
+SELECT Agency_ID, Name 
+FROM Agencies 
+WHERE Team_ID IS NULL;
+
+SELECT Disaster_ID AS ID, Type AS DisasterType, Location AS Area, Severity AS ImpactLevel 
+FROM Disaster;
+
+SELECT Disaster_ID, Type, Location, Disaster_Date 
+FROM Disaster 
+WHERE Disaster_Date BETWEEN '2024-06-01' AND '2024-12-31';
+
+SELECT Team_ID, Team_Name 
+FROM ResponseTeams 
+WHERE Status = 'Active' AND Capabilities LIKE '%Flood%';
