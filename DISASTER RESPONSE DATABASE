@@ -105,7 +105,7 @@ ADD Resource_Cost DECIMAL(10, 2);
 
 SELECT Resource_Type
 FROM Resources
-WHERE Quantity > '1000'
+WHERE Quantity > '2000'
 UNION
 SELECT Resource_Type
 FROM Resources
