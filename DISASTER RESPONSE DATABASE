@@ -221,9 +221,6 @@ ADD Affected_Population INT;
 ALTER TABLE Disaster
 ADD COLUMN Response_Status VARCHAR(50) DEFAULT 'Ongoing';
 
-DELETE FROM Disaster
-WHERE Disaster_ID = 'D004';
-
 UPDATE ResponseTeams
 SET Status = 'Deployed'
 WHERE Team_ID = 'T003';
