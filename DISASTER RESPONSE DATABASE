@@ -82,7 +82,7 @@ INSERT INTO Resources (Resource_ID, Resource_Type, Quantity, Availability) VALUE
 ('R003', 'Tent', '700', 'Available'),
 ('R004', 'Medicine', '800 units', 'Available'),
 ('R005', 'Blankets', '100', 'Available'),
-('R006', 'Clothes', '10000', 'Available');
+('R006', 'Clothes', '10000','Available');
 
 CREATE TABLE Agencies (
 Agency_ID VARCHAR (100) PRIMARY KEY,
