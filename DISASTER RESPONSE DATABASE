@@ -84,50 +84,6 @@ INSERT INTO Resources (Resource_ID, Resource_Type, Quantity, Availability) VALUE
 ('R005', 'Blankets', '100', 'Available'),
 ('R006', 'Clothes', '10000', 'Available');
 
-
-UPDATE Resources
-SET Quantity = '12000kg'
-WHERE Resource_ID = 'R002';
-
-DELETE FROM Resources
-WHERE Resource_ID = 'R005';
-
-SELECT Resource_ID, Resource_Type, Quantity
-FROM Resources
-WHERE Availability = 'Available';
-
-SELECT *
-FROM Resources
-ORDER BY Resource_Type ASC;
-
-ALTER TABLE Resources
-ADD Resource_Cost DECIMAL(10, 2);
-
-SELECT Resource_Type
-FROM Resources
-WHERE Quantity > '2000'
-UNION
-SELECT Resource_Type
-FROM Resources
-WHERE Availability = 'Available';
-
-SELECT Resource_Type
-FROM Resources
-WHERE Quantity > '1000'
-INTERSECT
-SELECT Resource_Type
-FROM Resources
-WHERE Resource_ID LIKE 'R00%';
-
-SELECT Resource_Type
-FROM Resources
-WHERE Quantity > '500'
-EXCEPT
-SELECT Resource_Type
-FROM Resources
-WHERE Availability = 'Not Available';
-
-
 CREATE TABLE Agencies (
 Agency_ID VARCHAR (100) PRIMARY KEY,
 Name VARCHAR (255) NOT NULL,
@@ -271,3 +227,45 @@ WHERE Disaster_ID = 'D004';
 UPDATE ResponseTeams
 SET Status = 'Deployed'
 WHERE Team_ID = 'T003';
+
+UPDATE Resources
+SET Quantity = '12000kg'
+WHERE Resource_ID = 'R002';
+
+DELETE FROM Resources
+WHERE Resource_ID = 'R005';
+
+SELECT Resource_ID, Resource_Type, Quantity
+FROM Resources
+WHERE Availability = 'Available';
+
+SELECT *
+FROM Resources
+ORDER BY Resource_Type ASC;
+
+ALTER TABLE Resources
+ADD Resource_Cost DECIMAL(10, 2);
+
+SELECT Resource_Type
+FROM Resources
+WHERE Quantity > '2000'
+UNION
+SELECT Resource_Type
+FROM Resources
+WHERE Availability = 'Available';
+
+SELECT Resource_Type
+FROM Resources
+WHERE Quantity > '1000'
+INTERSECT
+SELECT Resource_Type
+FROM Resources
+WHERE Resource_ID LIKE 'R00%';
+
+SELECT Resource_Type
+FROM Resources
+WHERE Quantity > '500'
+EXCEPT
+SELECT Resource_Type
+FROM Resources
+WHERE Availability = 'Not Available';
