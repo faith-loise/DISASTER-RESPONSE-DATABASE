@@ -119,6 +119,14 @@ SELECT Resource_Type
 FROM Resources
 WHERE Resource_ID LIKE 'R00%';
 
+SELECT Resource_Type
+FROM Resources
+WHERE Quantity > '500'
+EXCEPT
+SELECT Resource_Type
+FROM Resources
+WHERE Availability = 'Not Available';
+
 
 CREATE TABLE Agencies (
 Agency_ID VARCHAR (100) PRIMARY KEY,
