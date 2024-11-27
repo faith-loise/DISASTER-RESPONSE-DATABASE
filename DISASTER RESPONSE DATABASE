@@ -251,3 +251,23 @@ FULL JOIN Victims V ON A.Victim_ID = V.Victim_ID;
 SELECT A.Agency_ID, A.Name,  R.Resource_Type
 FROM Agencies A
 CROSS JOIN Resources R;
+UPDATE Disaster
+SET Severity = 'High'
+WHERE Disaster_ID = 'D003';
+
+UPDATE Disaster
+SET Severity = 'Critical', Disaster_Date = '2024-12-01'
+WHERE Disaster_ID = 'D001';
+
+ALTER TABLE Disaster
+ADD Affected_Population INT;
+
+ALTER TABLE Disaster
+ADD COLUMN Response_Status VARCHAR(50) DEFAULT 'Ongoing';
+
+DELETE FROM Disaster
+WHERE Disaster_ID = 'D004';
+
+UPDATE ResponseTeams
+SET Status = 'Deployed'
+WHERE Team_ID = 'T003';
