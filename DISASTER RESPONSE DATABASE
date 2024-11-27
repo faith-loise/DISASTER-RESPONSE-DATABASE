@@ -194,3 +194,29 @@ WHERE Disaster_Date BETWEEN '2024-06-01' AND '2024-12-31';
 SELECT Team_ID, Team_Name 
 FROM ResponseTeams 
 WHERE Status = 'Active' AND Capabilities LIKE '%Flood%';
+
+SELECT Location 
+FROM Disaster 
+WHERE Type = 'Flood'
+UNION
+SELECT Location 
+FROM Disaster 
+WHERE Type = 'Drought';
+
+SELECT Location 
+FROM Disaster 
+WHERE Type = 'Flood'
+INTERSECT
+SELECT Location 
+FROM Disaster 
+WHERE Type = 'Drought';
+
+SELECT Location 
+FROM Disaster 
+WHERE Type = 'Flood'
+EXCEPT
+SELECT Location 
+FROM Disaster 
+WHERE Type = 'Drought';
+
+
