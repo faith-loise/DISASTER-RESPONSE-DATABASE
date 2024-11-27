@@ -32,10 +32,10 @@ INSERT INTO Victims (Victim_ID, Name, Location, Needs, Status) VALUES
 ('V005', 'Eve Hassan', 'Garissa', 'Water, medical assistance', 'Rescued');
 
 CREATE TABLE ResponseTeams (
-    Team_ID VARCHAR(10) PRIMARY KEY,  
-    Team_Name VARCHAR(255),
-    Capabilities TEXT,
-    Status VARCHAR(50)
+Team_ID VARCHAR(10) PRIMARY KEY,  
+Team_Name VARCHAR(255),
+Capabilities TEXT,
+Status VARCHAR(50)
 );
 
 
@@ -227,4 +227,27 @@ SELECT Location
 FROM Disaster 
 WHERE Type = 'Drought';
 
+---inner join
+SELECT A.Agency_ID, A.Name , R.Team_Name
+FROM Agencies A
+INNER JOIN ResponseTeams R ON A.Team_ID = R.Team_ID;
 
+---left join
+SELECT A.Agency_ID, A.Name, D.Type
+FROM Agencies A
+LEFT JOIN Disaster D ON A.Disaster_ID = D.Disaster_ID;
+
+---right join
+SELECT D.Disaster_ID, D.Type , A.Name 
+FROM Disaster D
+RIGHT JOIN Agencies A ON A.Disaster_ID = D.Disaster_ID;
+
+---full join
+SELECT  A.Agency_ID, A.Name, V.Name 
+FROM Agencies A
+FULL JOIN Victims V ON A.Victim_ID = V.Victim_ID;
+
+---cross join
+SELECT A.Agency_ID, A.Name,  R.Resource_Type
+FROM Agencies A
+CROSS JOIN Resources R;
